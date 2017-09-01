@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-primary">
-                <div class="panel-heading">Search Beers</div>
+                <div class="panel-heading" id="searchPanel">Search Beers</div>
                 <div class="panel-body">
                     <div class="well well-sm">
                         <form class="form-horizontal">
@@ -23,7 +23,7 @@
 
                                 <div class="form-group ">
                                     <div class="col-md-12 text-center ">
-                                        <button type="button " class="btn btn-primary btn-lg " (click)="onSearch(id.value,name.value) ">Search</button>
+                                        <button type="button" id="btnSearch" class="btn btn-primary btn-lg " (click)="onSearch(id.value,name.value) ">Search</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -38,9 +38,9 @@
     <div class="row ">
         <div class="col-md-12 ">
             <div class="panel panel-primary ">
-                <div class="panel-heading ">Beer Lists</div>
+                <div class="panel-heading " id="listPanel">Beer Lists</div>
                 <div class="panel-body ">
-                    <table class="table table-bordered ">
+                    <table class="table table-bordered" id="tblList">
                         <thead>
                             <tr>
                                 <th>Image</th>
