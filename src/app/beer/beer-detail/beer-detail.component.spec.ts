@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BeerService } from 'app/beer/beer-service';
@@ -15,7 +14,10 @@ describe('BeerDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ BeerDetailComponent ] ,
-      imports: [CommonModule,HttpModule,RouterTestingModule,ReactiveFormsModule],
+      imports: [CommonModule,
+        HttpModule,
+        RouterTestingModule,
+        ReactiveFormsModule],
       providers: [ {provide: BeerService}],
     })
     .compileComponents();

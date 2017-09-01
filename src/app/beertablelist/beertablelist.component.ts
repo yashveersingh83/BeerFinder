@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs/Rx';
+import { transition } from '@angular/core/src/animation/dsl';
 import { debug } from 'util';
 import { debounce } from 'rxjs/operator/debounce';
 
@@ -14,12 +16,16 @@ import { FormGroup, FormControl } from '@angular/forms';
     styleUrls: ['./beertablelist.component.css']
 })
 export class BeertablelistComponent implements OnInit {
-    form: FormGroup;
     isDesc: boolean = false;
-    column: string = 'id';
+    column: string = 'name';
     direction: number;
     data: Datum[];
     search: FilterCriteria;
+    busy: Subscription;
+    public totalItems: number = 64;
+    public currentPage: number = 4;
+    public smallnumPages: number = 0;
+    isVisible = false;
     public constructor(private router: Router, private service: BeerService) {
 
     }
@@ -30,7 +36,14 @@ export class BeertablelistComponent implements OnInit {
         //this.service.getBeers(this.search).subscribe(x => { this.data = x.data; });
     }
     searchBeer() {
-        this.service.getBeers(this.search).subscribe(x => { this.data = x.data; console.log(this.data); });
+        this.busy =   
+        this.service.getBeers(this.search).
+        subscribe(x => { this.data = x.data;
+            this.isVisible =true;
+            console.log(this.data); 
+        })
+            ;
+           
     }
     onSort(colName: string) {
         this.isDesc = !this.isDesc; //change the direction    
@@ -62,7 +75,7 @@ export class BeertablelistComponent implements OnInit {
     }
     searchBeerByName(value: string) {
         if (value != null && value.length > 4) {
-            this.service.getBeersByName(this.search).subscribe(x => { this.data = x.data; console.log(this.data); });
+            this.busy =   this.service.getBeersByName(this.search).subscribe(x => { this.data = x.data; console.log(this.data); });
         }
     }
 

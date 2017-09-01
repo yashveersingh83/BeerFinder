@@ -1,7 +1,6 @@
-
+import { BusyModule } from 'angular2-busy';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { BeerDetailComponent } from './beer-detail/beer-detail.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -14,6 +13,7 @@ import { PaginationModule } from 'ngx-bootstrap';
 import { Ng2TableModule } from 'ng2-expanding-table';
 import { RowContentComponent } from "app/beer/beer-list/rowcontent-component";
 import { BeertablelistComponent } from "app/beertablelist/beertablelist.component";
+
 @NgModule({
   declarations: [
      BeerComponent,
@@ -26,7 +26,7 @@ import { BeertablelistComponent } from "app/beertablelist/beertablelist.componen
     FormsModule,ReactiveFormsModule,
     HttpModule ,BeerRoutingModule ,Ng2TableModule
     //,Ng2TableModule 
-    ,PaginationModule.forRoot()
+    ,PaginationModule.forRoot() 
   ],
   providers: [BeerService],
   entryComponents: [RowContentComponent]

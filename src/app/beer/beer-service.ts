@@ -25,8 +25,6 @@ export class BeerService {
         }
         request = request + '&&order=' + criteria.sortColumn;
         request = request + '&&sort=' + criteria.sortDirection;
-
-
         console.log(' Current Request  ' + request);
         return this.http.get(request)
             .map(res => res.json() || [])
@@ -45,9 +43,7 @@ export class BeerService {
             .catch(this.handleError);
     }
     public getBeerById(ids: string = ''): Observable<Datum> {
-       
         let request = this.API_PATH + 'beer/';
-
         if (ids.length > 0) {
             request = request + ids;
         }
@@ -57,8 +53,6 @@ export class BeerService {
             .map(res => res.json().data || [])
             .catch(this.handleError);
     }
-
-
     public validateApiKey(): Observable<Response> {
         return this.http.get(this.API_PATH + '?key=' + this.API_KEY)
             .catch(this.handleError);

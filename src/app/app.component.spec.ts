@@ -25,5 +25,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Find Your Beer!');
   }));
 
-  
+  it(`should have a link for beers`, async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const result = fixture.nativeElement.querySelector('nav navbar-nav li');
+    //expect(app.title).toEqual('Find Your Beer!');
+  }));
+
 });

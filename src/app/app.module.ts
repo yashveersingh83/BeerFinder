@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,15 +12,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
-    AppComponent,       
+    AppComponent,
     PageNotFoundComponent, WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule ,   
-    //BeerModule,
-    AppRoutingModule 
+    HttpModule ,
+    AppRoutingModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

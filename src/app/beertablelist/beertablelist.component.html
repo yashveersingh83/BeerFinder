@@ -1,22 +1,24 @@
 <div class="container">
     <div class="row">
+
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading" id="searchPanel">Search Beers</div>
                 <div class="panel-body">
                     <div class="well well-sm">
+
                         <form class="form-horizontal">
                             <fieldset>
 
                                 <div class="form-group">
                                     <span class="col-md-2 col-md-offset-2 text-center">Beer Name</span>
-                                    <div class="col-md-8">
+                                    <div class="col-md-6">
                                         <input id="name" name="name" [(ngModel)]="search.name" #name type="text" (change)="searchBeerByName($event.target.value)" placeholder=" seach by name hit tab to see results" class="form-control ">
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     <span class="col-md-2 col-md-offset-2 text-center ">Ids</span>
-                                    <div class="col-md-8 ">
+                                    <div class="col-md-6 ">
                                         <input id="id " #id name="id " [(ngModel)]="search.ids " type="text " placeholder="search by ids comma seprated example  (7GpRms,jT9mTq ) " class="form-control ">
                                     </div>
                                 </div>
@@ -27,7 +29,7 @@
                                     </div>
                                 </div>
                             </fieldset>
-                            <pre>  {{ search | json }} </pre>
+
                         </form>
                     </div>
                 </div>
@@ -38,8 +40,11 @@
     <div class="row ">
         <div class="col-md-12 ">
             <div class="panel panel-primary ">
+
                 <div class="panel-heading " id="listPanel">Beer Lists</div>
-                <div class="panel-body ">
+                <div class="panel-body pre-scrollable">
+
+                    <img src="assets/loading.gif" style="height: 50px;width: 50px; " [hidden]="isVisible" />
                     <table class="table table-bordered" id="tblList">
                         <thead>
                             <tr>
@@ -60,7 +65,9 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             <tr *ngFor="let rows of data ">
+
                                 <td>
                                     <div class="text-center ">
                                         <img src="{{rows.labels?.icon}} " class="img-responsive rounded " /> </div>
@@ -76,11 +83,17 @@
                                 <td>{{rows.ibu}}</td>
                                 <td>{{rows.glass?.name}}</td>
                                 <td>{{rows.description}}</td>
+
                             </tr>
 
                         </tbody>
                     </table>
+
                 </div>
+
+                <!-- <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                <pre class="card card-block card-header">The selected page no: {{currentPage}}/{{smallnumPages}}</pre>
+             -->
             </div>
         </div>
 
