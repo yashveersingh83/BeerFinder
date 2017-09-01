@@ -14,14 +14,15 @@ export class BeerService {
     //options = new RequestOptions({ headers: this.headers });
     constructor(private http: Http) { }
 
-    public getBeers(criteria: FilterCriteria ): Observable<BeerResult> {
+    public getBeers(criteria: FilterCriteria): Observable<BeerResult> {
         let request = this.API_PATH + 'beers/';
         request = request + '?key=' + this.API_KEY;
         if (criteria.name.length > 0) {
-            request = request + '&&name=' + name;
+            request = request + '&&name=' + criteria.name;
         }
         if (criteria.ids.length > 0) {
-            request = request + '&&ids=' + criteria.ids;        }
+            request = request + '&&ids=' + criteria.ids;
+        }
         request = request + '&&order=' + criteria.sortColumn;
         request = request + '&&sort=' + criteria.sortDirection;
 

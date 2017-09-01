@@ -36,6 +36,7 @@ export class BeertablelistComponent implements OnInit {
         this.direction = this.isDesc ? 1 : -1;
         this.search.sortColumn = this.column;
         this.search.sortDirection = this.direction === 1 ? 'Asc' : 'Desc';
+        this.searchBeer();
         console.log(JSON.stringify( this.search  ));
     }
     onSearch(ids: string, name: string) {
@@ -54,7 +55,9 @@ export class BeertablelistComponent implements OnInit {
         }
 
     }
-
+    navigateToDetail(id:string){
+        console.log(id);
+    }
   
 
 }

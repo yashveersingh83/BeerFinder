@@ -44,20 +44,26 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th (click)="onSort('id')">Beer ID <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+                                <th>id
+                                    <!-- <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i> -->
                                 </th>
-                                <th (click)="onSort('name')">Name<i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                                <th (click)="onSort('name')">name<i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
                                 </th>
-                                <th (click)="onSort('description')">Description <i class="fa" [ngClass]="{'fa-sort': column != 'description', 'fa-sort-asc': (column == 'description' && isDesc), 'fa-sort-desc': (column == 'description' && !isDesc) }" aria-hidden="true"> </i>
+                                <th (click)="onSort('abv')">abv <i class="fa" [ngClass]="{'fa-sort': column != 'abv', 'fa-sort-asc': (column == 'abv' && isDesc), 'fa-sort-desc': (column == 'abv' && !isDesc) }" aria-hidden="true"> </i>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let rows of data">
-                                <th scope="row"></th>
-                                <td>{{rows.id}}</td>
+                                <td>
+                                    <div class="text-center">
+                                        <img src="{{rows.labels?.icon}}" class="img-responsive rounded" /> </div>
+                                </td>
+                                <td>
+                                    <a href="#" (click)="navigateToDetail($event)">{{rows.id}}  </a>
+                                </td>
                                 <td>{{rows.name}}</td>
-                                <td class="text-wrap">{{rows.description}}</td>
+                                <td class="text-wrap">{{rows.abv}}</td>
                             </tr>
 
                         </tbody>
