@@ -32,6 +32,18 @@ export class BeerService {
             .map(res => res.json() || [])
             .catch(this.handleError);
     }
+    public getBeersByName(criteria: FilterCriteria): Observable<BeerResult> {
+        let request = this.API_PATH + 'search/';
+        request = request + '?key=' + this.API_KEY;
+        if (criteria.name.length > 0) {
+            request = request + '&&q=' + criteria.name;
+        }
+        request = request + '&&type=beer';
+        console.log(' Search api  Request  ' + request);
+        return this.http.get(request)
+            .map(res => res.json() || [])
+            .catch(this.handleError);
+    }
     public getBeerById(ids: string = ''): Observable<Datum> {
         let request = this.API_PATH + 'beer/';
 

@@ -1,3 +1,4 @@
+import { debounce } from 'rxjs/operator/debounce';
 
 import { FilterCriteria } from './../beer/Models/Models';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +18,7 @@ export class BeertablelistComponent implements OnInit {
     column: string = 'id';
     direction: number;
     data: Datum[];
-    search:FilterCriteria;
+    search: FilterCriteria;
     public constructor(private router: Router, private service: BeerService) {
 
     }
@@ -27,9 +28,9 @@ export class BeertablelistComponent implements OnInit {
         this.searchBeer();
         //this.service.getBeers(this.search).subscribe(x => { this.data = x.data; });
     }
-    searchBeer()   {
+    searchBeer() {
         this.service.getBeers(this.search).subscribe(x => { this.data = x.data; console.log(this.data); });
-       }
+    }
     onSort(colName: string) {
         this.isDesc = !this.isDesc; //change the direction    
         this.column = colName;
@@ -37,7 +38,7 @@ export class BeertablelistComponent implements OnInit {
         this.search.sortColumn = this.column;
         this.search.sortDirection = this.direction === 1 ? 'Asc' : 'Desc';
         this.searchBeer();
-        console.log(JSON.stringify( this.search  ));
+        console.log(JSON.stringify(this.search));
     }
     onSearch(ids: string, name: string) {
 
@@ -49,15 +50,19 @@ export class BeertablelistComponent implements OnInit {
             this.search.ids = ids;
             this.searchBeer();
         }
-        else
-        {
+        else {
             this.searchBeer();
         }
 
     }
-    navigateToDetail(id:string){
+    navigateToDetail(id: string) {
         console.log(id);
     }
-  
+    searchBeerByName(value: string) {
+        if (value != null && value.length > 4) {
+            debugger;
+            this.service.getBeersByName(this.search).subscribe(x => { this.data = x.data; console.log(this.data); });
+        }
+    }
 
 }

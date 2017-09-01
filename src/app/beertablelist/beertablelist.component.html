@@ -11,19 +11,19 @@
                                 <div class="form-group">
                                     <span class="col-md-2 col-md-offset-2 text-center">Beer Name</span>
                                     <div class="col-md-8">
-                                        <input id="name" name="name" [(ngModel)]="search.name" #name type="text" placeholder="seach by name" class="form-control">
+                                        <input id="name" name="name" [(ngModel)]="search.name" #name type="text" (change)="searchBeerByName($event.target.value)" placeholder=" seach by name hit tab to see results" class="form-control ">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <span class="col-md-2 col-md-offset-2 text-center">Id</span>
-                                    <div class="col-md-8">
-                                        <input id="id" #id name="id" [(ngModel)]="search.ids" type="text" placeholder="search by id" class="form-control">
+                                <div class="form-group ">
+                                    <span class="col-md-2 col-md-offset-2 text-center ">Ids</span>
+                                    <div class="col-md-8 ">
+                                        <input id="id " #id name="id " [(ngModel)]="search.ids " type="text " placeholder="search by ids comma seprated example  (7GpRms,jT9mTq ) " class="form-control ">
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="col-md-12 text-center">
-                                        <button type="button" class="btn btn-primary btn-lg" (click)="onSearch(id.value,name.value)">Search</button>
+                                <div class="form-group ">
+                                    <div class="col-md-12 text-center ">
+                                        <button type="button " class="btn btn-primary btn-lg " (click)="onSearch(id.value,name.value) ">Search</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -35,35 +35,46 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Beer Lists</div>
-                <div class="panel-body">
-                    <table class="table table-bordered">
+    <div class="row ">
+        <div class="col-md-12 ">
+            <div class="panel panel-primary ">
+                <div class="panel-heading ">Beer Lists</div>
+                <div class="panel-body ">
+                    <table class="table table-bordered ">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Image</th>
                                 <th>id
-                                    <!-- <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i> -->
+                                    <!-- <i class="fa " [ngClass]="{ 'fa-sort': column !='id' , 'fa-sort-asc': (column=='id' && isDesc), 'fa-sort-desc': (column=='id' && !isDesc) } " aria-hidden="true "> </i> -->
                                 </th>
-                                <th (click)="onSort('name')">name<i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                                <th (click)="onSort( 'name') ">Name<i class="fa " [ngClass]="{ 'fa-sort': column !='name' , 'fa-sort-asc': (column=='name' && isDesc), 'fa-sort-desc': (column=='name' && !isDesc) } " aria-hidden="true "> </i>
                                 </th>
-                                <th (click)="onSort('abv')">abv <i class="fa" [ngClass]="{'fa-sort': column != 'abv', 'fa-sort-asc': (column == 'abv' && isDesc), 'fa-sort-desc': (column == 'abv' && !isDesc) }" aria-hidden="true"> </i>
+
+                                <th (click)="onSort( 'abv') ">ABV <i class="fa " [ngClass]="{ 'fa-sort': column !='abv' , 'fa-sort-asc': (column=='abv' && isDesc), 'fa-sort-desc': (column=='abv' && !isDesc) } " aria-hidden="true "> </i>
                                 </th>
+                                <th> year </th>
+                                <th (click)="onSort( 'ibu') ">IBU <i class="fa " [ngClass]="{ 'fa-sort': column !='year' , 'fa-sort-asc': (column=='year' && isDesc), 'fa-sort-desc': (column=='year' && !isDesc) } " aria-hidden="true "> </i>
+                                </th>
+                                <th> Glass </th>
+                                <th> Description </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let rows of data">
+                            <tr *ngFor="let rows of data ">
                                 <td>
-                                    <div class="text-center">
-                                        <img src="{{rows.labels?.icon}}" class="img-responsive rounded" /> </div>
+                                    <div class="text-center ">
+                                        <img src="{{rows.labels?.icon}} " class="img-responsive rounded " /> </div>
                                 </td>
                                 <td>
-                                    <a href="#" (click)="navigateToDetail($event)">{{rows.id}}  </a>
+                                    <a href="# " (click)="navigateToDetail($event) ">{{rows.id}}  </a>
                                 </td>
                                 <td>{{rows.name}}</td>
-                                <td class="text-wrap">{{rows.abv}}</td>
+
+                                <td>{{rows.abv}}</td>
+                                <td>{{rows.year}}</td>
+                                <td>{{rows.ibu}}</td>
+                                <td>{{rows.glass?.name}}</td>
+                                <td>{{rows.description}}</td>
                             </tr>
 
                         </tbody>
