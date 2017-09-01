@@ -83,3 +83,14 @@
         status: string;
     }
 
+export class FilterCriteria {
+    name: string;
+    ids: string;
+    sortColumn = 'name';
+    sortDirection= 'Asc';
+    constructor()
+    {
+        this.name = '';
+        this.ids = '';
+    }
+}

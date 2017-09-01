@@ -1,90 +1,70 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Search Beers</div>
-        <div class="panel-body">
-          <div class="well well-sm">
-            <form class="form-horizontal" method="post"  [formGroup]="form" (ngSubmit)="onSearch()" >
-              <fieldset>             
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Search Beers</div>
+                <div class="panel-body">
+                    <div class="well well-sm">
+                        <form class="form-horizontal">
+                            <fieldset>
 
-                <div class="form-group">
-                  <span class="col-md-2 col-md-offset-2 text-center">Beer Name</span>
-                  <div class="col-md-8">
-                    <input id="name" name="name" formControlName="name" type="text" placeholder="seach by name" class="form-control">
-                  </div>
+                                <div class="form-group">
+                                    <span class="col-md-2 col-md-offset-2 text-center">Beer Name</span>
+                                    <div class="col-md-8">
+                                        <input id="name" name="name" [(ngModel)]="search.name" #name type="text" placeholder="seach by name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2 col-md-offset-2 text-center">Id</span>
+                                    <div class="col-md-8">
+                                        <input id="id" #id name="id" [(ngModel)]="search.ids" type="text" placeholder="search by id" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <button type="button" class="btn btn-primary btn-lg" (click)="onSearch(id.value,name.value)">Search</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <pre>  {{ search | json }} </pre>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <span class="col-md-2 col-md-offset-2 text-center">Id</span>
-                  <div class="col-md-8">
-                    <input id="id" name="id"  formControlName="id"type="text" placeholder="search by id" class="form-control">
-                  </div>
-                </div>
-
-                <!--<div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
-                            </div>
-                        </div>-->
-
-                <div class="form-group">
-                  <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary btn-lg" (click) ="onSearch()" >Search</button>
-                  </div>
-                </div>
-              </fieldset>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Beer Lists</div>
-        <div class="panel-body">
-        <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th (click) ="onSort('id')" >Beer ID <i class="fa"   [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
-      </th>
-      <th (click) ="onSort('name')" >Name<i class="fa"   [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
-      </th>
-      <th (click) ="onSort('description')">Description <i class="fa"   [ngClass]="{'fa-sort': column != 'description', 'fa-sort-asc': (column == 'description' && isDesc), 'fa-sort-desc': (column == 'description' && !isDesc) }" aria-hidden="true"> </i>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor ="let rows of data"  >
-      <th scope="row"></th>
-      <td>{{rows.id}}</td>
-      <td>{{rows.name}}</td>
-      <td class="text-wrap">{{rows.description}}</td>
-    </tr>
-    
-  </tbody>
-</table>
-        </div>
-      </div>
     </div>
 
-  </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Beer Lists</div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th (click)="onSort('id')">Beer ID <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+                                </th>
+                                <th (click)="onSort('name')">Name<i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                                </th>
+                                <th (click)="onSort('description')">Description <i class="fa" [ngClass]="{'fa-sort': column != 'description', 'fa-sort-asc': (column == 'description' && isDesc), 'fa-sort-desc': (column == 'description' && !isDesc) }" aria-hidden="true"> </i>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rows of data">
+                                <th scope="row"></th>
+                                <td>{{rows.id}}</td>
+                                <td>{{rows.name}}</td>
+                                <td class="text-wrap">{{rows.description}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
