@@ -1,3 +1,4 @@
+import { debug } from 'util';
 import { debounce } from 'rxjs/operator/debounce';
 
 import { FilterCriteria } from './../beer/Models/Models';
@@ -55,12 +56,12 @@ export class BeertablelistComponent implements OnInit {
         }
 
     }
-    navigateToDetail(id: string) {
-        console.log(id);
+    navigateToDetail(currentRow: Datum) {
+
+    this.router.navigate(['/beers', currentRow.id]);
     }
     searchBeerByName(value: string) {
         if (value != null && value.length > 4) {
-            debugger;
             this.service.getBeersByName(this.search).subscribe(x => { this.data = x.data; console.log(this.data); });
         }
     }

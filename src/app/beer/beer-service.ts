@@ -45,6 +45,7 @@ export class BeerService {
             .catch(this.handleError);
     }
     public getBeerById(ids: string = ''): Observable<Datum> {
+       
         let request = this.API_PATH + 'beer/';
 
         if (ids.length > 0) {
@@ -53,7 +54,7 @@ export class BeerService {
         request = request + '?key=' + this.API_KEY;
         console.log(' Current Request  ' + request);
         return this.http.get(request)
-            .map(res => res.json() || [])
+            .map(res => res.json().data || [])
             .catch(this.handleError);
     }
 
