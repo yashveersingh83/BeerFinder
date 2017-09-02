@@ -1,7 +1,8 @@
 # BeerFinder
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
-This is a sample application which using the latest concept of angular like Ahead of time complination .Also this app is demonstrate the use of angular routing and lazy loading of modules . 
+This is a sample application which is  using  latest concepts of angular like Ahead of time complination .
+Also this app is demonstrate the use of angular routing and lazy loading of modules how to configure multiple modules and unit testing of the components. 
 
 ## Development server
 
