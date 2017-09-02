@@ -10,22 +10,22 @@
                         <form class="form-horizontal">
                             <fieldset>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <span class="col-md-2 col-md-offset-2 text-center">Beer Name</span>
                                     <div class="col-md-6">
                                         <input id="name" name="name" [(ngModel)]="search.name" #name type="text" (change)="searchBeerByName($event.target.value)" placeholder=" seach by name hit tab to see results" class="form-control ">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group ">
                                     <span class="col-md-2 col-md-offset-2 text-center ">Ids</span>
                                     <div class="col-md-6 ">
-                                        <input id="id " #id name="id " [(ngModel)]="search.ids " type="text " placeholder="search by ids comma seprated example  (7GpRms,jT9mTq ) " class="form-control ">
+                                        <input id="id " #id name="id " type="text " placeholder="search by ids comma seprated example  (7GpRms,jT9mTq ) " class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group ">
                                     <div class="col-md-12 text-center ">
-                                        <button type="button" id="btnSearch" class="btn btn-primary btn-lg " (click)="onSearch(id.value,name.value) ">Search</button>
+                                        <button type="button" id="btnSearch" class="btn btn-primary btn-lg " (click)="onSearch('ids',id.value) ">Search</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -43,11 +43,10 @@
 
                 <div class="panel-heading " id="listPanel">Beer Lists</div>
                 <div class="panel-body pre-scrollable">
-
-                    <img src="assets/loading.gif" style="height: 50px;width: 50px; " [hidden]="isVisible" />
                     <table class="table table-bordered" id="tblList">
                         <thead>
                             <tr>
+                                <img src="assets/loading.gif" style="height: 50px;width: 50px; " [hidden]="isVisible" />
                                 <th>Image</th>
                                 <th>id
                                     <!-- <i class="fa " [ngClass]="{ 'fa-sort': column !='id' , 'fa-sort-asc': (column=='id' && isDesc), 'fa-sort-desc': (column=='id' && !isDesc) } " aria-hidden="true "> </i> -->
@@ -62,6 +61,25 @@
                                 </th>
                                 <th> Glass </th>
                                 <th> Description </th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>
+                                    <div style="text-align:center;"><input type="text" #name name="name" (change)="onSearch('name',$event.target.value)"></div>
+                                </th>
+                                <th>
+                                    <div style="text-align:center;"><input type="text" #abv name="abv" (change)="onSearch('abv',$event.target.value)"></div>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                    <div style="text-align:center;"><input type="text" #ibu name="ibu" (change)="onSearch('ibu',$event.target.value)"></div>
+                                </th>
+
+
+                                <th> </th>
+                                <th> </th>
                             </tr>
                         </thead>
                         <tbody>

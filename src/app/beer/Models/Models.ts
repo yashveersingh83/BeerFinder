@@ -84,13 +84,13 @@
     }
 
 export class FilterCriteria {
-    name: string;
-    ids: string;
+    colName: string;
+    value: string;
     sortColumn = 'name';
     sortDirection= 'Asc';
     constructor()
     {
-        this.name = '';
-        this.ids = '';
+        this.colName = '';
+        this.value = '';
     }
 }

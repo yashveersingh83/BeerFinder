@@ -13,10 +13,10 @@ import { BeertablelistComponent } from "app/beertablelist/beertablelist.componen
                 path: '',
                 component: BeerComponent,
                 children: [       
-                      {path:'' ,  component: BeertablelistComponent  }         ,
-                   
-                 {path:':id' ,  component: BeerDetailComponent  }
-               
+                {path:'' ,  component: BeertablelistComponent  }         ,
+                {path:'list' ,  component: BeerListComponent  }         ,
+                 {path: ':id' ,  component: BeerDetailComponent  }
+
                 ]
             }
         ])

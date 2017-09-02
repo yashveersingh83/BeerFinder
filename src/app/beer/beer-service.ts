@@ -15,13 +15,26 @@ export class BeerService {
     constructor(private http: Http) { }
 
     public getBeers(criteria: FilterCriteria): Observable<BeerResult> {
+        let request = this.API_PATH + 'beers/';      
+        request = request + '?key=' + this.API_KEY;
+        // if (criteria.name.length > 0) {
+        //     request = request + '&&name=' + criteria.name;
+        // }
+        // if (criteria.ids.length > 0) {
+        //     request = request + '&&ids=' + criteria.ids;
+        // }
+        request = request + '&&order=' + criteria.sortColumn;
+        request = request + '&&sort=' + criteria.sortDirection;
+        console.log(' Current Request  ' + request);
+        return this.http.get(request)
+            .map(res => res.json() || [])
+            .catch(this.handleError);
+    }
+    public getBeersByFilter(criteria: FilterCriteria): Observable<BeerResult> {
         let request = this.API_PATH + 'beers/';
         request = request + '?key=' + this.API_KEY;
-        if (criteria.name.length > 0) {
-            request = request + '&&name=' + criteria.name;
-        }
-        if (criteria.ids.length > 0) {
-            request = request + '&&ids=' + criteria.ids;
+        if (criteria.colName.length > 0) {
+            request = request + '&&' + criteria.colName +'='  + criteria.value;
         }
         request = request + '&&order=' + criteria.sortColumn;
         request = request + '&&sort=' + criteria.sortDirection;
@@ -33,8 +46,8 @@ export class BeerService {
     public getBeersByName(criteria: FilterCriteria): Observable<BeerResult> {
         let request = this.API_PATH + 'search/';
         request = request + '?key=' + this.API_KEY;
-        if (criteria.name.length > 0) {
-            request = request + '&&q=' + criteria.name;
+        if (criteria.colName.length > 0) {
+            request = request + '&&q=' + criteria.value;
         }
         request = request + '&&type=beer';
         console.log(' Search api  Request  ' + request);

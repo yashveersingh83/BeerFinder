@@ -10,8 +10,7 @@ const appRoutes: Routes = [
  
    { path: '',   component:WelcomeComponent },
    { path: 'beers',   loadChildren:'app/beer/beer-module#BeerModule' },
-   
-   
+
 ];
  
 @NgModule({
