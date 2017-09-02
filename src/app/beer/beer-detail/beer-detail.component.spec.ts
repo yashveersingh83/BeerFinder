@@ -18,7 +18,7 @@ describe('BeerDetailComponent', () => {
         HttpModule,
         RouterTestingModule,
         ReactiveFormsModule],
-      providers: [ {provide: BeerService}],
+      providers: [BeerService],
     })
     .compileComponents();
   }));

@@ -20,8 +20,8 @@ export class BeerDetailComponent implements OnInit ,OnDestroy {
     this.sub = this.route.params.subscribe(
       params => {
           let id = params['id'];
-        
-          this.service.getBeerById(id.toString()).subscribe(
+
+          this.service.getBeerById(id).subscribe(
               r => {
               this.detail = r;
               console.log(r);

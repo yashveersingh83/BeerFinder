@@ -4,29 +4,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-4 item-photo">
-                    <img style="max-width:100%;" src="{{detail.labels?.large}}" />
+                    <img style="max-width:100%;" src="{{detail?.labels?.large}}" />
 
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
 
-                    <h3>{{detail.name}}</h3>
-                    <h6 class="title-price"><small>{{detail.description}}</small></h6>
+                    <h3>{{detail?.name}}</h3>
+                    <h6 class="title-price"><small>{{detail?.description}}</small></h6>
                     <h3 class="title-price">Category</h3>
-                    <h5 style="margin-top:0px;">{{detail.style?.category?.name}}</h5>
-                    <div class="section">
-                        <h6 class="title-attr" style="margin-top:15px;"><small>COLOR</small></h6>
-                        <div>
-                            <div class="attr" style="width:25px;background:#5a5a5a;"></div>
-                            <div class="attr" style="width:25px;background:white;"></div>
-                        </div>
-                    </div>
-                    <div class="section" style="padding-bottom:5px;">
-                        <h6 class="title-attr"><small>CAPACIDAD</small></h6>
-                        <div>
-                            <div class="attr2">16 GB</div>
-                            <div class="attr2">32 GB</div>
-                        </div>
-                    </div>
+                    <h5 style="margin-top:0px;">{{detail?.style?.category?.name}}</h5>
+
                     <div class="section" style="padding-bottom:20px;">
                         <button class="btn btn-primary" aria-hidden="true" (click)="onBackClick()"> Back to List</button>
                     </div>

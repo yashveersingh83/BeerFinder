@@ -69,7 +69,7 @@
         ibu: string;
         availableId?: number;
         available: Available;
-        labels: Labels;
+        labels?: Labels;
         originalGravity: string;
         servingTemperature: string;
         servingTemperatureDisplay: string;
